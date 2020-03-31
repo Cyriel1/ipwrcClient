@@ -1,0 +1,23 @@
+<div class="background">
+    <nav>
+        <ul class="nav">
+            <li class="nav-logo"><a routerLink="/homepage" routerLinkActive="active">Arcade</a></li>
+            <li class="search-bar">
+                <input type="text" size="70" name="search" placeholder="Search products..">
+            </li>
+            <li class="nav-item dropdown"><button (click)="showLoginScreen($event)" class="nav-account" id="button-account">Account<span>&#9660;</span></button>
+                <form #authForm="ngForm" class="dropdown-content form" id="login-screen" (ngSubmit)="submitCredentials(authForm)">
+                    <label class="form-label" for="username">Username:</label>
+                    <input type="text" id="username" ngModel name="username" required>
+                    <label class="form-label" for="password">Password: </label>
+                    <input type="password" id="password" ngModel name="password" required>
+                    <label class="form-register"><a>No Account? Register here</a></label>
+                    <button class="form-button" [disabled]="!authForm.valid">Login</button>
+                </form>
+            </li>
+            <li class="nav-item"><a>ShoppingCart</a></li>
+            <li class="nav-item"><a routerLink="/products" routerLinkActive="active">Products</a></li>
+        </ul>
+    </nav>
+</div>
+

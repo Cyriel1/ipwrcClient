@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css?family=Viga&display=swap');
+
+/* .background{
+    background-image: url("src/assets/images/Banner.jpg");
+    min-height: 500px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+} */
+
+.nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #f3f3f3;
+    text-align: center;
+    font-family: 'Viga', Arial, Helvetica, sans-serif;
+}
+
+.nav-item{
+    float: right;
+}
+
+.nav a{
+    display: block;
+    color: #666;
+    padding: 1em;
+    text-decoration: none;
+}
+
+.nav-account{
+    display: block;
+    color: #666;
+    padding: 1em;
+    font: 1em 'Viga';
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.nav-account:hover {
+    background-color: #e7e7e7;
+    color: black;
+}
+
+.nav a:hover {
+    background-color: #e7e7e7;
+    color: black;
+}
+
+.nav-logo{
+    float: left;
+}
+
+.form{
+    background-color: #f3f3f3;
+    border-radius: 5px;
+    padding: 20px;
+    box-sizing: border-box;
+    width: 375px;
+}
+
+.form-label{
+    width: 25%;
+    padding-right: 25px;
+}
+
+.form-register{
+    float: left;
+}
+
+.form-button{
+    background-color: #58CCED;
+    border: none;
+    outline: none;
+    padding: 10px 24px;
+    margin-top: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 5px;
+    font: 1em 'Viga';
+    cursor: pointer;
+}
+
+.form-button:focus{
+    background-color: #45b4d4;
+}
+
+.form input{
+    width: 55%;
+    padding: 5px;
+    margin: 8px 0;
+    border: none;
+    border-bottom: 2px solid #666;
+    outline: none;
+}
+
+.form input:focus{
+    border-bottom: 2px solid black;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content{
+    display: none;
+    position: fixed;
+    right: 0.5em;
+    box-shadow: 0px 1px 3px 0px rgb(49, 48, 48);
+    z-index: 1;
+    user-select: none;
+}
+
+.show-login-screen {
+    display: block;
+    animation: fadein 0.7s;
+}
+
+@keyframes fadein {
+    from {
+        top: 0; opacity: 0;
+    }
+    to {
+        top: 53px; opacity: 1;
+    }
+}
+
+
+.search-bar {
+    padding-top: 7px;
+    float: left;
+}
+
+.search-bar input{
+    float: left;
+    box-sizing: border-box;
+    width: 60%;
+    padding: 0.8em;
+    outline: none;
+    border-radius: 5px 5px 0px 0px;
+    border: none;
+    border-bottom: 2px solid grey;
+    transition: width 0.4s ease-in-out;
+}
+
+input[type="text"]{
+    font-family: 'Viga',Arial, Helvetica, sans-serif;
+}
+
+.search-bar input:focus{
+    border-bottom: 2px solid black;
+    width: 100%;
+}
+
+span{
+    font-size: 0.9em;
+    padding-left: 5px;
+}
+

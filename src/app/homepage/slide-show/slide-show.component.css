@@ -1,0 +1,53 @@
+.slideshow-container{
+    box-sizing: border-box;
+    position: relative;
+    width: 65%;
+    margin: auto;
+    overflow: hidden;
+}
+
+.slide{
+    cursor: auto;
+}
+
+.slide-text{
+    position: absolute;
+    font: 20px 'Viga';
+    color: white;
+    background-color: rgba(0, 0, 0, 0.6);
+    box-shadow: 0px 0px 4px 16px rgba(0, 0, 0, 0.6) ;
+    padding: 6px 15px;
+    bottom: 0;
+    width: 100%;
+}
+
+img{
+    width: 100%;
+    max-height: 500px;
+}
+
+.nextButton, .previousButton{
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 15px;
+    font-size: 18px;
+    border-radius: 0px 10px 10px 0px;
+    margin-top: -28px;
+    color: white;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: rgba(0,0,0,0.6);
+}
+
+.previousButton:hover, .nextButton:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
+.nextButton{
+    right: 0;
+    border-radius: 10px 0px 0px 10px;
+}
+
+
