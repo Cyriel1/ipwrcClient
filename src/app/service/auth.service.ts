@@ -5,7 +5,6 @@ interface AuthResponseData {
     token: String;
 }
 
-
 @Injectable({ providedIn: 'root'})
 export class AuthService {
 
@@ -15,23 +14,13 @@ export class AuthService {
 
     login(username: string, password: string){
         
-        return this.http.post(
-            'http://localhost:8080/application/account/getCredentials', 
+        return this.http.post<string[]>(
+            'http://82.95.234.55/application/account/getCredentials', 
             {
                 username: username,
                 password: password,
-            },
-            {
-                responseType: 'text'
             }
         )
     }
-
-    
-
-
-
-
-
 
 }

@@ -1,5 +1,11 @@
-<div>
-    <div *ngFor="let product of productsFromServer">
-        <p>{{product.productID}}</p>
-    </div>
+<div class="grid-container">
+     <ul *ngFor="let product of products">
+          <img [src]="'data:image/jpg;base64, ' + product.productBase64Image | bypassUrl" alt="Product Picture"  /> 
+          <div class="column">
+               <li>{{product.productName}}</li>
+               <li [innerHTML]="changeCurrency(product.productPrice)"></li>
+               <li>{{product.productStatus}}</li>
+          </div>
+          <img id="{{product.productID}}" [ngStyle]="checkButtonCondition(product)" (click)="storeOrder(product, $event)" class="button" src="assets\products\shopping_cart.png" alt="Cart button" />
+     </ul>
 </div>

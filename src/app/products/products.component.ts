@@ -1,13 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-
-export interface Product{
-    productID: number,
-    productName: string,
-    productPrice: number,
-    productDescription: string,
-    productStatus: string
-}
+import { GetService } from '../service/get.service';
+import { Product } from 'src/model/get.model';
 
 @Component({
   selector: 'app-products',
@@ -16,44 +9,60 @@ export interface Product{
 })
 
 export class ProductsComponent implements OnInit {
-  productsFromServer: Product;
+  products: Product;
 
-  constructor(private http: HttpClient) { }
+  constructor(private getService: GetService) { 
+  }
 
   ngOnInit() {
     this.getProducts();
   }
 
-  getCookie(cname: string) {
-    var name = cname + "=";
-    var ca = document.cookie.split(';');
-    for(var i = 0; i < ca.length; i++) {
-      var c = ca[i];
-      while (c.charAt(0) == ' ') {
-        c = c.substring(1);
-      }
-      if (c.indexOf(name) == 0) {
-        return c.substring(name.length, c.length);
-      }
-    }
-    return "";
+  changeCurrency(money: number){
+    let newCurrency = new Intl.NumberFormat('en-IN', { style: "currency", currency: "EUR" }).format(money);
+
+    return newCurrency.toString().replace(".", ",");
   }
 
   getProducts(){
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json',
-        'Authorization': 'Bearer ' + this.getCookie('ESSENTIALS'),
-        'CSRF-TOKEN': 'CSRF ' + sessionStorage.getItem("")
-      })
-    };
-    this.http.get<Product>('http://localhost:8080/application/product/getProducts', httpOptions)
-    .subscribe(
+    this.getService.getProducts().subscribe(
       getData => {
-        this.productsFromServer = getData;
-        console.log(this.productsFromServer);
+        this.products = getData;
+        console.log(this.products);
       }
     )
+  }
+
+  storeOrder(product: Product, event: any){   
+    if(product.productStatus != "OUT OF ORDER"){
+      localStorage.setItem(btoa(product.productID.toString()), btoa(product.productName));
+    }
+    event.stopPropagation();
+  }
+
+  placedOrder(product: Product){
+    for (let item in localStorage){
+      if(localStorage.getItem(item) != null){
+        if(localStorage.getItem(item) == btoa(product.productName)){
+          (document.getElementById(product.productID.toString()) as HTMLImageElement).src ="assets/products/check_mark.png";
+    
+          return { 'background-color': '#40a7c4', 'cursor': 'default' };
+        }
+        (document.getElementById(product.productID.toString()) as HTMLImageElement).src ="assets/products/shopping_cart.png";
+      }
+    }
+  }
+
+  disableButton(product: Product){
+    if(product.productStatus == "OUT OF ORDER"){
+
+      return { 'background-color': '#D4D4D4', 'cursor': 'default' };
+    }
+  }
+
+  checkButtonCondition(product: Product){
+
+    return this.placedOrder(product) || this.disableButton(product);
   }
 
 }

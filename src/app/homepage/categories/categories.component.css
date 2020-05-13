@@ -6,13 +6,13 @@
     grid-template-columns: auto auto auto;
   }
 
-  .grid-item {
+.grid-item {
       background-color: rgba(250, 1, 1, 0.8);
       border: 2px solid rgba(0, 0, 0, 0.8);
       margin: 0.5em;
   }
 
-  img{
+img{
       width: 100%;
-  }
+}
     

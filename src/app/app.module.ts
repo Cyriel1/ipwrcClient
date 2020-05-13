@@ -10,13 +10,17 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { SlideShowComponent } from './homepage/slide-show/slide-show.component';
 import { CategoriesComponent } from './homepage/categories/categories.component';
 import { ProductsComponent } from './products/products.component';
-
+import { BypassUrlPipe } from './service/bypassUrl.pipe';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { RegisterComponent } from './register/register.component';
 
 
 const appRoutes: Routes = [
   { path: 'homepage', component: HomepageComponent },
-  { path: 'products', component: ProductsComponent}
- 
+  { path: 'products', component: ProductsComponent},
+  { path: 'shopping-cart', component: ShoppingCartComponent},
+  { path: 'register', component: RegisterComponent},
+  { path: '**', redirectTo: 'homepage', pathMatch: 'full' }
 ];
 
 @NgModule({
@@ -27,6 +31,9 @@ const appRoutes: Routes = [
     SlideShowComponent,
     CategoriesComponent,
     ProductsComponent,
+    BypassUrlPipe,
+    ShoppingCartComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -37,4 +44,7 @@ const appRoutes: Routes = [
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+
+export class AppModule {
+  
+ }

@@ -33,7 +33,6 @@ export class NavigationBarComponent implements OnInit {
     this.authService.login(username, password).subscribe(
       postData => {
         this.tokenSuccess(postData);
-        console.log(postData);
       },
       error => {
         console.log(error);
@@ -44,16 +43,21 @@ export class NavigationBarComponent implements OnInit {
 
   @HostListener('document:click', ['$event'])
   clickout(event: any){
+    this.removeLoginScreen(event);
+  }
+
+  removeLoginScreen(event: any){
     if(!document.getElementById('login-screen').contains(event.target)){
       document.getElementById('login-screen').classList.remove('show-login-screen');
     }
   }
+  
 
-  tokenSuccess(response: string) {
-    sessionStorage.setItem('CSRF', response);
-    document.cookie = "ESSENTIALS=" + response;
-    console.log(sessionStorage.getItem('CSRF'));
-    console.log(document.cookie);
+  tokenSuccess(response: string[]) {
+    let encryptedToken = response[0];
+    let csrfToken = response[1];
+    sessionStorage.setItem('csrf-token', csrfToken);
+    document.cookie = "token=" + encryptedToken;
   }
 
 }

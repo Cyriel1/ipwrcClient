@@ -11,11 +11,11 @@
                     <input type="text" id="username" ngModel name="username" required>
                     <label class="form-label" for="password">Password: </label>
                     <input type="password" id="password" ngModel name="password" required>
-                    <label class="form-register"><a>No Account? Register here</a></label>
+                    <label class="form-register"><a routerLink="/register" routerLinkActive="active">No Account? Register here</a></label>
                     <button class="form-button" [disabled]="!authForm.valid">Login</button>
                 </form>
             </li>
-            <li class="nav-item"><a>ShoppingCart</a></li>
+            <li class="nav-item"><a routerLink="/shopping-cart" routerLinkActive="active">ShoppingCart</a></li>
             <li class="nav-item"><a routerLink="/products" routerLinkActive="active">Products</a></li>
         </ul>
     </nav>
